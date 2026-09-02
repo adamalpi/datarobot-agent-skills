@@ -59,6 +59,11 @@ def _write_fixture_repo(tmp_path: Path, changelog_text: str) -> Path:
         file_path.parent.mkdir(parents=True, exist_ok=True)
         file_path.write_text(json.dumps(content, indent=2) + "\n")
     (tmp_path / "CHANGELOG.md").write_text(changelog_text)
+    pyproject = tmp_path / version_bump.PYPROJECT_FILE
+    pyproject.parent.mkdir(parents=True, exist_ok=True)
+    pyproject.write_text(
+        '[project]\nname = "datarobot-skills-utils"\nversion = "1.0.0"\n'
+    )
 
     subprocess.run(["git", "init", "-q"], cwd=tmp_path, check=True)
     subprocess.run(
@@ -82,7 +87,7 @@ def _read_version(tmp_path: Path, relative_path: str, jq_path: str) -> str:
     return result.stdout.strip()
 
 
-def test_bump_updates_all_six_files_to_the_same_version(tmp_path: Path) -> None:
+def test_bump_updates_all_tracked_files_to_the_same_version(tmp_path: Path) -> None:
     repo = _write_fixture_repo(tmp_path, CHANGELOG_WITH_ENTRY)
 
     exit_code = version_bump.main(["--repo-root", str(repo), "--bump", "minor"])
@@ -90,6 +95,8 @@ def test_bump_updates_all_six_files_to_the_same_version(tmp_path: Path) -> None:
     assert exit_code == 0
     for relative_path, jq_path in version_bump.VERSION_FILES:
         assert _read_version(repo, relative_path, jq_path) == "1.1.0"
+    pyproject_text = (repo / version_bump.PYPROJECT_FILE).read_text()
+    assert 'version = "1.1.0"' in pyproject_text
 
 
 def test_bump_renames_unreleased_section_with_fresh_empty_one(tmp_path: Path) -> None:
