@@ -25,7 +25,6 @@ Usage:
 
 import argparse
 import os
-import re
 import subprocess
 import sys
 from datetime import date
@@ -41,7 +40,6 @@ VERSION_FILES = (
     (".codex-plugin/plugin.json", ".version"),
     ("gemini-extension.json", ".version"),
 )
-PYPROJECT_FILE = "packages/datarobot-skills-utils/pyproject.toml"
 
 
 def bump_version(current_version: str, bump: str) -> str:
@@ -76,20 +74,6 @@ def bump_json_version(
     file_path.write_text(result.stdout)
 
 
-def bump_pyproject_version(repo_root: Path, new_version: str) -> None:
-    file_path = repo_root / PYPROJECT_FILE
-    text, count = re.subn(
-        r'^version = "[^"]+"$',
-        f'version = "{new_version}"',
-        file_path.read_text(),
-        count=1,
-        flags=re.MULTILINE,
-    )
-    if count != 1:
-        raise SystemExit(f'{PYPROJECT_FILE}: no `version = "..."` line to bump')
-    file_path.write_text(text)
-
-
 def extract_unreleased_body(changelog_text: str) -> str:
     start = changelog_text.index(CHANGELOG_HEADING) + len(CHANGELOG_HEADING)
     rest = changelog_text[start:]
@@ -107,8 +91,7 @@ def rename_unreleased_section(
 
 def commit_release(repo_root: Path, new_version: str) -> None:
     changed_files = [relative_path for relative_path, _ in VERSION_FILES] + [
-        PYPROJECT_FILE,
-        "CHANGELOG.md",
+        "CHANGELOG.md"
     ]
     subprocess.run(["git", "add", *changed_files], cwd=repo_root, check=True)
     subprocess.run(
@@ -149,7 +132,6 @@ def main(argv: list[str] | None = None) -> int:
 
     for relative_path, jq_path in VERSION_FILES:
         bump_json_version(repo_root, relative_path, jq_path, new_version)
-    bump_pyproject_version(repo_root, new_version)
 
     changelog_path.write_text(
         rename_unreleased_section(changelog_text, new_version, date.today())
