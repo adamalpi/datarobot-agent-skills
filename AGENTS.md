@@ -61,7 +61,7 @@ Install and test the skills after prompting the user for the expected trigger ph
 
 ### Plugin version management
 
-Versions are automatic. Add a human-written `[Unreleased]` item describing the change in this pull request. The version bump workflow keeps the shared plugin metadata in sync across Claude, Cursor, Codex, Gemini, and npm package manifests, plus the `datarobot-skills-utils` PyPI package (`packages/datarobot-skills-utils/pyproject.toml`). For more information, see [CONTRIBUTING.md](CONTRIBUTING.md).
+Versions are automatic. Add a human-written `[Unreleased]` item describing the change in this pull request. The version bump workflow keeps the shared plugin metadata in sync across Claude, Cursor, Codex, Gemini, and npm package manifests. For more information, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## SDK usage
 

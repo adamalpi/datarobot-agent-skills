@@ -12,7 +12,6 @@ Validate plugin/marketplace definitions for Gemini, Claude, Codex, and Cursor:
 import json
 import shutil
 import subprocess
-import tomllib
 from pathlib import Path
 
 import pytest
@@ -198,7 +197,7 @@ def test_cursor_plugin_skills_directory_exists(cursor_plugin: dict) -> None:
 
 
 def test_all_plugin_versions_match() -> None:
-    """Assert that all plugin manifests (Claude, Codex, Cursor, Gemini) and the utils package declare the same version."""
+    """Assert that all plugin manifests (Claude, Codex, Cursor, Gemini) declare the same version."""
     claude_plugin_file = REPO_ROOT / ".claude-plugin" / "plugin.json"
     claude_marketplace_file = REPO_ROOT / ".claude-plugin" / "marketplace.json"
     codex_plugin_file = REPO_ROOT / ".codex-plugin" / "plugin.json"
