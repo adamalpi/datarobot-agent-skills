@@ -14,6 +14,8 @@ Version bumps, `[Unreleased]` renames, and releases are automated&mdash;see
 
 ## [Unreleased]
 
+## [1.14.0] - 2026-10-02
+
 - `repo`: Added automated public Codex plugin packaging, release attachment, and manifest synchronization.
 - `datarobot-agent-assist`: Expanded integration test coverage for how LLM choices flow from catalog listings into `agent_spec.md` and `.env` (gateway vs. deployed routing, `setup_and_run` failure paths, spec completeness), and added an on-prem / deployed-LLM example to `agent-spec-examples.md`.
 
