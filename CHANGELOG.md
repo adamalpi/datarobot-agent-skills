@@ -15,6 +15,7 @@ Version bumps, `[Unreleased]` renames, and releases are automated&mdash;see
 ## [Unreleased]
 
 - `repo`: Fixed OpenAI plugin listing: brand color now meets 2:1 contrast on white (Indigo `#5C41FF`), category set to Coding, and listing text no longer references other AI agents.
+- `datarobot-setup`: Required user confirmation before running the Linux/WSL installer scripts, and replaced the go-task `curl | sh` install with `uv tool install go-task-bin`.
 
 ## [1.14.0] - 2026-10-02
 
