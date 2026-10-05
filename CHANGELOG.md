@@ -14,6 +14,8 @@ Version bumps, `[Unreleased]` renames, and releases are automated&mdash;see
 
 ## [Unreleased]
 
+- `repo`: Fixed OpenAI plugin listing: brand color now meets 2:1 contrast on white (Indigo `#5C41FF`), category set to Coding, and listing text no longer references other AI agents.
+
 ## [1.14.0] - 2026-10-02
 
 - `repo`: Added automated public Codex plugin packaging, release attachment, and manifest synchronization.
