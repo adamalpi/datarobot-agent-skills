@@ -14,6 +14,8 @@ Version bumps, `[Unreleased]` renames, and releases are automated&mdash;see
 
 ## [Unreleased]
 
+- `repo`: Fixed OpenAI plugin listing: category set to Developer Tools (Coding is not a valid marketplace category), and the plugin name, display name, and descriptions no longer contain the brand name, which the marketplace validator rejects.
+
 ## [1.15.0] - 2026-10-06
 
 - `repo`: Fixed OpenAI plugin listing: brand color now meets 2:1 contrast on white (Indigo `#5C41FF`), category set to Coding, and listing text no longer references other AI agents.
