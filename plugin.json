@@ -24,7 +24,7 @@
         "shortDescription": "DataRobot AI/ML workflows",
         "longDescription": "Build on the DataRobot platform from your development environment. Use these skills to prepare data, train and explain models, deploy and monitor models, make predictions, automate DataRobot application delivery, operate workloads, and add observability to existing applications. The skills guide DataRobot Python SDK and CLI workflows with practical instructions and supporting utilities.",
         "developerName": "DataRobot",
-        "category": "Coding",
+        "category": "Developer Tools",
         "capabilities": [
           "Interactive",
           "Read",
