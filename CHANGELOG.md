@@ -14,6 +14,8 @@ Version bumps, `[Unreleased]` renames, and releases are automated&mdash;see
 
 ## [Unreleased]
 
+## [1.16.0] - 2026-10-07
+
 - `repo`: Fixed OpenAI plugin listing: category set to Developer Tools (Coding is not a valid marketplace category).
 - `datarobot-app-framework-cicd`: Replaced the `curl | sh` Pulumi install in the state-management guide with Homebrew and a link to the official install docs.
 
